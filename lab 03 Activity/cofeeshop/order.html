@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeShop Order Form</title>
+
+</head>
+<body>
+    <h1>CoffeeShop Order Form</h1>
+    <a href="index.html">Back to CoffeeShops</a>
+    <br><br>
+
+    <div class="Page-container">
+        <form>
+            <label class="form-label-required" for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <br><br>
+
+            <label class="form-label-required" for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <br><br>
+
+            <label class="form-label-required" for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" >
+
+            <br><br>
+
+            <div class="form-label" for="coffee">Coffee</div>
+            <select id="coffee" name="coffee" value="Coffee">
+                <option value="cappuccino">Cappuccino</option>
+                <option value="latte">Cafe latte</option>
+                <option value="mocha">Mocha</option>
+            </select>
+
+            <p>Order Type</p>
+            <div class="choice-group">
+                <input type="radio" id="dineIN" name="ordertype" value="dine-in">
+                <label for="dineIN">Dine In</label>
+
+                <input type="radio" id="takeawy" name="ordertype" value="Take-Away">
+                <label for="takeaway">Take-Away</label>
+            </div>
+            <p>Extra Items</p>
+            <div class="choice-group">
+                <input type="checkbox" id="milk" name="extra" value="milk">
+                <label for="milk">Extra Milk</label>
+
+                 <input type="checkbox" id="cream" name="extra" value="cream">
+                <label for="cream">Extra Cream</label>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
