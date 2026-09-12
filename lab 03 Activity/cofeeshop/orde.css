@@ -1,0 +1,138 @@
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#F9F6F0;
+    color:#2C221E;
+    line-height: 1.6;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    color:#6F4E37;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+a{
+    color:#6F4E37;
+    text-decoration: none;
+    font-weight:500;
+    
+}
+
+a:hover{
+    color:#563C2A;
+    text-decoration: underline;
+}
+.Page-container{
+    background-color:#ffffff;
+    max-width:500px;
+    width:100%;
+    margin-top:20px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow:0 4px 20px rgba(111,78,55,0.88);
+    box-sizing: border-box;
+}
+
+label,
+.form-label,
+.form-label-required{
+    /*display:block;*/
+    font-weight:600;
+    margin-bottom: 6px;
+    font-size:0.95rem
+}
+.form-label-required::after{
+    content:" *";
+    color:#A94442
+}
+
+input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+    width:100%;
+    padding: 10px 10px;
+    border:1px solid #D9C3B0;
+    border-radius: 10px;
+    color:#2C221E;
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+input:focus,select:focus,textarea:focus{
+    outline:none;
+    border-color:#6F4E37;
+    box-shadow: 0 0 0 3px rgba(111,78 ,55,0.15);
+    background-color: #FFFFFF;
+}
+
+form p{
+    font-weight:600;
+    margin:20px 0 8px 0;
+    font-size:0.95rem;
+}
+
+.choice-group{
+    display:flex;
+    gap:20px;
+    justify-items: center;
+    align-items:center;
+    margin-bottom: 10px;
+}
+
+.choice-group input[type="radio"],
+.choice-group input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    width: 18px;
+    height: 18px;
+    margin-right: -10px;
+    
+}
+
+.choice-group label{
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor:pointer;
+}
+
+textarea{
+    resize: vertical;
+}
+
+input[type="submit"] , input[type="reset"]{
+    font-weight:600;
+    padding:12px 20px;
+    border:none;
+    border-radius: 12px;
+    margin-right:12px;
+    cursor:pointer;
+    
+
+
+}
+
+input[type="submit"]{
+    background-color: #9e6f4d;
+    color:#ffffff;
+    width:100%;
+    margin-top:10px
+    
+}
+
+input[type="reset"]{
+    background-color: rgba(111,78 ,55,0.15);
+    color:#777777;
+    width:100%;
+    margin-top:8px
+
+}
+
+@media(max-width:600px){
+    body{
+        padding: 10px;
+    }
+    .Page-container{
+        grid-template-columns: 1fr;
+    }
+}

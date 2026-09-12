@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoffeeShop Order Form</title>
+    <link rel="stylesheet" href="orde.css">
 
 </head>
 <body>
@@ -40,7 +41,7 @@
                 <input type="radio" id="dineIN" name="ordertype" value="dine-in">
                 <label for="dineIN">Dine In</label>
 
-                <input type="radio" id="takeawy" name="ordertype" value="Take-Away">
+                <input type="radio" id="takeaway" name="ordertype" value="Take-Away">
                 <label for="takeaway">Take-Away</label>
             </div>
             <p>Extra Items</p>
@@ -51,6 +52,13 @@
                  <input type="checkbox" id="cream" name="extra" value="cream">
                 <label for="cream">Wipped</label>
             </div>
+
+            <label class="form-label" for="message">Addtional Infromation</label>
+            <textarea id="message" name="message"rows=4></textarea>
+
+            <br><br>
+            <input type="submit" value="submit order">
+            <input type="reset" value="Reset">
         </form>
     </div>
 </body>
