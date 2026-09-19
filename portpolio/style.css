@@ -9,3 +9,11 @@
     scroll-behavior: smooth;
     font-family: 'Nunito' , sans-serif;
 }
+
+:root{
+    --bg-color:#191f36;
+    --snd-bf-color:#262b40;
+    --text-color:#fff;
+    --main-colo:#59b2f4;
+    
+}
