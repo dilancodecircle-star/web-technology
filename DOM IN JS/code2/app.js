@@ -21,7 +21,7 @@ formElement.addEventListener('submit' , function(event){
     console.log("user nam : " + nameValue);
     console.log("usr email : " + emailValue);////////////////////////////////
 });*/
-
+/*
 const formElement = document.getElementById('myForm');
 formElement.addEventListener('submit' , function(event){
     event.preventDefault();
@@ -31,4 +31,12 @@ formElement.addEventListener('submit' , function(event){
      console.log("user name : " + useName);
      console.log('user email : ' + useEmail);
 
+});*/
+
+const formElement = document.getElementById('myForm');
+formElement.addEventListener('submit' , function(event){
+    event.preventDefault();
+    const formData = new FormData(formElement);
+    console.log(formData.get('username'));
+    console.log(formData.get('email'));
 });

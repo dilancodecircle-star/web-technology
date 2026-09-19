@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Security Awareness</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans flex items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-lg w-full bg-gray-800 rounded-xl shadow-2xl p-6 text-center border border-red-500">
+        
+        <!-- Heading -->
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-red-500 mb-2">ඔබත් රැවටුණා නේද? 🚨</h1>
+            <p class="text-gray-300">පාරේ තිබුණ පළියට හොයන්නේ බලන්නේ නැතුව QR Code ස්කෑන් කරන්න එපා!</p>
+        </div>
+
+        <!-- Warning Box -->
+        <div class="bg-red-900/30 border border-red-500/50 rounded-lg p-4 mb-6 text-left">
+            <h2 class="text-xl font-semibold text-red-400 mb-3">ඔබ මෙම පිටුවට පිවිසි සැණින් අප ලබාගත් දත්ත:</h2>
+            
+            <ul class="space-y-2 text-sm text-gray-300">
+                <li>📍 <strong>ඔබගේ ස්ථානය:</strong> <span id="location" class="text-white font-mono animate-pulse">සොයමින් පවතී...</span></li>
+                <li>🌐 <strong>IP ලිපිනය:</strong> <span id="ip" class="text-white font-mono animate-pulse">සොයමින් පවතී...</span></li>
+                <li>📱 <strong>ඔබගේ උපාංගය:</strong> <span id="device" class="text-white font-mono">සොයමින් පවතී...</span></li>
+            </ul>
+        </div>
+
+        <!-- Scan Counter -->
+        <div class="bg-gray-700 rounded-lg p-4 mb-6">
+            <p class="text-lg">මේ වන විටත් කිසිදු සොයා බැලීමකින් තොරව මෙම QR කේතය ස්කෑන් කර ඇති ගණන:</p>
+            <p class="text-4xl font-black text-yellow-400 mt-2" id="scan-count">...</p>
+        </div>
+
+        <!-- Advice Section -->
+        <div class="bg-blue-900/30 border border-blue-500/50 rounded-lg p-4 text-left">
+            <h3 class="text-lg font-semibold text-blue-400 mb-2">💡 ආරක්ෂිත උපදෙස:</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+                නොදන්නා තැන්වල අලවා ඇති හෝ අන්තර්ජාලයේ දකින QR Codes කිසිවිටෙකත් ස්කෑන් නොකරන්න. මෙසේ කිරීමෙන් ඔබගේ බැංකු ගිණුම් වලට පිවිසීමට, ඔබගේ රහස්‍ය දත්ත සොරකම් කිරීමට හෝ ඔබගේ දුරකථනයට වෛරස් (Malware) ඇතුළු කිරීමට හැකර්වරුන්ට හැකියාව ඇත.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Get Approximate Location and IP using a free API (No GPS permission needed)
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('location').innerText = `${data.city}, ${data.country_name}`;
+                document.getElementById('ip').innerText = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('location').innerText = "ස්ථානය සොයාගත නොහැක";
+                document.getElementById('ip').innerText = "IP සොයාගත නොහැක";
+            });
+
+        // 2. Get Basic Device / Browser Info
+        const userAgent = navigator.userAgent;
+        let deviceName = "Unknown Device";
+        if (/android/i.test(userAgent)) { deviceName = "Android Device"; }
+        else if (/iPad|iPhone|iPod/.test(userAgent)) { deviceName = "iOS Device (iPhone/iPad)"; }
+        else if (/Windows/.test(userAgent)) { deviceName = "Windows PC"; }
+        else if (/Mac/.test(userAgent)) { deviceName = "Mac OS"; }
+        
+        document.getElementById('device').innerText = deviceName;
+
+        // 3. Simulated Scan Counter
+        // Note: For a real global counter on a static Vercel site, you would need to connect to a MongoDB or Firebase database.
+        // Here we use localStorage to simulate the effect and keep adding to a base number for awareness.
+       // 3. Real Global Scan Counter (Free API)
+        const counterElement = document.getElementById('scan-count');
+        counterElement.innerText = "ගණනය කරමින්..."; // Loading text
+
+        // Free Counter API ekak haraha aththa data eka ganeema
+        // 'dilan-qr-awareness-project' kiyanne me site ekata wens karapu unique namak
+        fetch('https://api.counterapi.dev/v1/dilan-qr-awareness-project/scans/up')
+            .then(response => response.json())
+            .then(data => {
+                // API eken update wela ena aththa count eka display kireema
+                counterElement.innerText = data.count.toLocaleString();
+            })
+            .catch(error => {
+                console.error("Count API Error:", error);
+                counterElement.innerText = "ගණනය කළ නොහැක";
+            });
+        
+        // Show total fake count + local visits
+        document.getElementById('scan-count').innerText = (baseCount + localScans).toLocaleString();
+    </script>
+
+</body>
+</html>
