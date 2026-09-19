@@ -12,7 +12,7 @@ buttonElement.addEventListener('click' , function(){
     document.body.style.backgroundColor = "lightblue";
 });*/
 
-const formElement = document.getElementById('myForm');
+/*const formElement = document.getElementById('myForm');
 formElement.addEventListener('submit' , function(event){
     event.preventDefault();
     const nameValue = document.getElementById('username').value;
@@ -20,4 +20,15 @@ formElement.addEventListener('submit' , function(event){
 
     console.log("user nam : " + nameValue);
     console.log("usr email : " + emailValue);////////////////////////////////
+});*/
+
+const formElement = document.getElementById('myForm');
+formElement.addEventListener('submit' , function(event){
+    event.preventDefault();
+    const useName = document.getElementById('username').value;
+     const useEmail = document.getElementById('useremail').value;
+
+     console.log("user name : " + useName);
+     console.log('user email : ' + useEmail);
+
 });
