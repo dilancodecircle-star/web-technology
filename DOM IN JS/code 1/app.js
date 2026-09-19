@@ -17,3 +17,5 @@ const ul2 = document.querySelector('ul');
 const li2 = document.createElement('li');
 ul2.append(li2);
 li2.innerText= 'spider man';
+
+li.setAttribute('id' , 'main-heading')
