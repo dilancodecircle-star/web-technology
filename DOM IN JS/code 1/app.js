@@ -1,5 +1,8 @@
-const title = document.getElementById('main-heading');
-console.log(title);
+/*const myListItem = document.querySelector(".list-items");
+//for(var i= 0; i<myListItem.length ; i++){
+    myListItem.style.color = 'red';
+//}
 
-const listelement = document.getElementsByClassName('list-items');
-console.log(listelement);
+const ul = document.querySelector('ul');
+const li = document.createElement('li');
+ul.append(li); */
