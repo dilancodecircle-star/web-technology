@@ -144,7 +144,7 @@
             else{
                 console.log("between 5 and 10");
             }
-                */
+                
 
                 function  testsize(num){
                     if(num< 5){
@@ -162,7 +162,27 @@
                     }
 
                 }
-                console.log(testsize(16));
+                console.log(testsize(16));*/
+
+                function switch_case(val){
+                    var ans="";
+                    switch(val){
+                        case 1:
+                            ans = 'alpha';
+                            break;
+
+                        case 2:
+                            ans = 'beta';
+                            break;
+                        
+                        default:
+                            return 'invalid index';
+                    }
+                    return ans;
+
+                }
+
+                console.log(switch_case(4));
 
 
 
