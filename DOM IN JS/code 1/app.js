@@ -19,3 +19,11 @@ ul2.append(li2);
 li2.innerText= 'spider man';
 
 li.setAttribute('id' , 'main-heading')
+
+li2.setAttribute('id' , 'main-heading');
+
+li2.removeAttribute('id');
+li.removeAttribute('id');
+
+li.classList.add('list-items');
+li2.classList.add('list-items');
