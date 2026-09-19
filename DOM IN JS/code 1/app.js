@@ -27,3 +27,6 @@ li.removeAttribute('id');
 
 li.classList.add('list-items');
 li2.classList.add('list-items');
+
+li.remove();
+li2.remove();
