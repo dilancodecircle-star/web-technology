@@ -32,3 +32,16 @@ section{
     padding:10rem 9% 2rem ;
 }
 
+.header{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100px;
+    padding:2rem 9%;
+    background-color: var(--bg-color);
+    display:felx;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
