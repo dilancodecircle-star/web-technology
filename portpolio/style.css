@@ -17,3 +17,7 @@
     --main-colo:#59b2f4;
 
 }
+html{
+    font-size: 62.5%;
+   overflow-x: hidden;
+}
