@@ -50,3 +50,9 @@ body{
     background-color: azure;
     padding: 20px;
 }
+
+.footer{
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+}
