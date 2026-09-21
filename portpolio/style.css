@@ -76,3 +76,11 @@ section{
     align-items: center;
 }
 
+.home-content h3:nth-of-type(2){
+    margin-bottom: 2rem;
+
+}
+
+span{
+    color:var(--main-colo)
+}
