@@ -69,7 +69,6 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <!-- Notifications & Profile -->
                 <button class="relative text-gray-600 hover:text-blue-600 transition">
                     <i data-lucide="bell" class="w-5 h-5"></i>
                     <span
@@ -85,7 +84,7 @@
         <!-- MAIN CONTENT AREA -->
         <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
 
-            <!-- HISTORY BUTTONS (Right aligned as per sketch) -->
+            <!-- HISTORY BUTTONS -->
             <div class="flex justify-end gap-3 mb-2">
                 <button onclick="toggleDamageHistoryModal(true)"
                     class="flex items-center gap-2 bg-red-50 text-red-700 border border-red-200 px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-red-100 transition shadow-sm">
@@ -178,7 +177,7 @@
 
                 </div>
 
-                <!-- RIGHT COLUMN (Critical Stock Alerts) -->
+                <!-- RIGHT COLUMN -->
                 <div class="lg:col-span-1 space-y-6">
                     <div
                         class="bg-white rounded-xl shadow-sm border border-amber-200 overflow-hidden flex flex-col h-full">
@@ -188,7 +187,6 @@
                         </div>
 
                         <div class="p-4 flex-1 space-y-4">
-                            <!-- Alert Item 1 -->
                             <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg flex flex-col gap-2">
                                 <div>
                                     <p class="text-sm font-bold text-gray-800">Arduino Nano V3.0</p>
@@ -202,7 +200,6 @@
                                 </div>
                             </div>
 
-                            <!-- Alert Item 2 -->
                             <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg flex flex-col gap-2">
                                 <div>
                                     <p class="text-sm font-bold text-gray-800">Raspberry Pi 4 Model B</p>
@@ -224,8 +221,8 @@
             <!-- BOTTOM ACTION BUTTON -->
             <div class="flex justify-end pt-4 pb-6">
                 <button onclick="updateInventory()"
-                    class="flex items-center gap-2 bg-gray-800 text-white font-bold px-10 py-3 rounded-lg hover:bg-gray-900 shadow-lg transition">
-                    <i data-lucide="database" class="w-5 h-5"></i> Update Inventory
+                    class="flex items-center gap-2 bg-blue-600 text-white font-bold px-10 py-3 rounded-lg hover:bg-blue-700 shadow-lg transition">
+                    <i data-lucide="save" class="w-5 h-5"></i> Update Inventory
                 </button>
             </div>
 
@@ -280,7 +277,9 @@
 
     <!-- JavaScript -->
     <script>
-        lucide.createIcons();
+        document.addEventListener("DOMContentLoaded", function () {
+            lucide.createIcons();
+        });
 
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('hidden');
@@ -296,7 +295,6 @@
             show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
         }
 
-        // FUNCTION FOR 'SEND TO RMA' BUTTON
         function addToRMAList() {
             const qty = document.getElementById('adj-qty').value;
             const reason = document.getElementById('adj-reason').value;
@@ -324,33 +322,31 @@
             const dateString = today.toLocaleDateString();
 
             const newDamageRecord = `
-        <div class="bg-red-50 border border-red-200 p-4 rounded-lg flex justify-between items-start text-sm">
-          <div>
-            <p class="font-bold text-gray-900 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-gray-500"></i> ${itemName}</p>
-            <p class="text-xs text-gray-600 mt-1 font-mono bg-white inline-block px-2 py-0.5 border rounded">S/N: ${serial}</p>
-            <p class="text-xs text-red-700 mt-2 font-semibold">Issue: ${reason}</p>
-            <p class="text-xs text-gray-600 mt-1 italic">Fault: ${faultDesc}</p>
-            <p class="text-xs text-gray-400 mt-2">${dateString} at ${timeString}</p>
-          </div>
-          <div class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs shrink-0 shadow-sm">
-            ${qty} Units (RMA)
-          </div>
-        </div>
-      `;
+                <div class="bg-red-50 border border-red-200 p-4 rounded-lg flex justify-between items-start text-sm">
+                  <div>
+                    <p class="font-bold text-gray-900 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-gray-500"></i> ${itemName}</p>
+                    <p class="text-xs text-gray-600 mt-1 font-mono bg-white inline-block px-2 py-0.5 border rounded">S/N: ${serial}</p>
+                    <p class="text-xs text-red-700 mt-2 font-semibold">Issue: ${reason}</p>
+                    <p class="text-xs text-gray-600 mt-1 italic">Fault: ${faultDesc}</p>
+                    <p class="text-xs text-gray-400 mt-2">${dateString} at ${timeString}</p>
+                  </div>
+                  <div class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs shrink-0 shadow-sm">
+                    ${qty} Units (RMA)
+                  </div>
+                </div>
+            `;
 
             damageList.innerHTML = newDamageRecord + damageList.innerHTML;
             lucide.createIcons();
 
             alert(`${qty} units of ${itemName} have been moved to the RMA List!`);
 
-            // Clear inputs
             document.getElementById('adj-qty').value = 1;
             document.getElementById('adj-reason').value = "";
             document.getElementById('fault-serial').value = "";
             document.getElementById('fault-desc').value = "";
         }
 
-        // FUNCTION FOR 'UPDATE INVENTORY' BUTTON (General adjustments)
         function updateInventory() {
             const qty = document.getElementById('adj-qty').value;
             const reason = document.getElementById('adj-reason').value;
@@ -371,22 +367,21 @@
             const timeString = today.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             const newRecord = `
-        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg flex justify-between items-center text-sm">
-          <div>
-            <p class="font-bold text-gray-800">${itemName}</p>
-            <p class="text-xs text-gray-500 mt-1">Reason: <span class="font-semibold text-amber-600">${reason}</span> | Logged: ${timeString}</p>
-          </div>
-          <div class="bg-gray-200 text-gray-700 px-3 py-1 rounded font-bold">
-            -${qty} Units
-          </div>
-        </div>
-      `;
+                <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg flex justify-between items-center text-sm">
+                  <div>
+                    <p class="font-bold text-gray-800">${itemName}</p>
+                    <p class="text-xs text-gray-500 mt-1">Reason: <span class="font-semibold text-amber-600">${reason}</span> | Logged: ${timeString}</p>
+                  </div>
+                  <div class="bg-gray-200 text-gray-700 px-3 py-1 rounded font-bold">
+                    -${qty} Units
+                  </div>
+                </div>
+            `;
 
             historyList.innerHTML = newRecord + historyList.innerHTML;
 
             alert(`Inventory Database Updated Successfully!\nReduced ${qty} units of ${itemName} due to ${reason}.`);
 
-            // Clear inputs
             document.getElementById('adj-qty').value = 1;
             document.getElementById('adj-reason').value = "";
         }
