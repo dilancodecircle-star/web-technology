@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Store - Receive Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex">
+
+    <!-- LEFT SIDEBAR NAVIGATION (Tech Theme) -->
+    <aside id="sidebar"
+        class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between transition-all duration-300 shadow-xl z-10">
+        <div>
+            <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white font-bold p-2 rounded-lg"><i data-lucide="cpu"
+                            class="w-5 h-5"></i></div>
+                    <div>
+                        <h2 class="font-bold text-white text-sm">Tech Store</h2>
+                        <p class="text-xs text-slate-400">Manager: Kasun Kuma</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="p-4 space-y-1 text-sm font-medium">
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white text-left transition">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white text-left transition">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Place Order
+                </button>
+                <!-- Active Tab -->
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-left transition shadow-lg">
+                    <i data-lucide="truck" class="w-5 h-5"></i> Receive Delivery
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white text-left transition">
+                    <i data-lucide="tool" class="w-5 h-5"></i> Adjustments & RMAs
+                </button>
+            </nav>
+        </div>
+
+        <!-- BRANCH INDICATOR -->
+        <div class="p-4 border-t border-slate-800">
+            <div
+                class="text-xs font-semibold text-slate-300 bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 text-center flex items-center justify-center gap-1">
+                📍 Colombo Branch
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="flex-1 flex flex-col min-h-screen">
+        <!-- TOP BAR -->
+        <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleSidebar()"
+                    class="text-slate-600 hover:text-blue-600 p-1 rounded-lg hover:bg-slate-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-lg font-bold text-slate-800">Tech Items</h1>
+            </div>
+
+            <!-- NOTIFICATIONS, PROFILE & HISTORY -->
+            <div class="flex items-center space-x-5">
+                <button onclick="toggleHistoryModal(true)"
+                    class="flex items-center gap-2 bg-slate-800 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-900 transition shadow">
+                    <i data-lucide="history" class="w-4 h-4"></i> GRN History
+                </button>
+
+                <!-- Notification Bell -->
+                <button class="relative text-slate-600 hover:text-blue-600 transition">
+                    <i data-lucide="bell" class="w-6 h-6"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">3</span>
+                </button>
+
+                <!-- Profile / User -->
+                <div
+                    class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold border-2 border-white shadow-sm cursor-pointer hover:bg-slate-300 transition">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+
+            <!-- SPLIT SCREEN: HIGH VALUE VS NORMAL -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- LEFT SIDE: HIGH-VALUE COMPONENT -->
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+                        <h3 class="font-bold text-blue-800 text-sm flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> High Value Component
+                        </h3>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+                        <!-- Item Details & Qty -->
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">MSI Cyborg 15 Laptop</h4>
+                                <p class="text-xs text-slate-500 mt-1">Expected Qty: 5</p>
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                                <label class="text-xs font-bold text-slate-600">Qty:</label>
+                                <input type="number" id="laptop-qty" value="5"
+                                    class="w-16 px-2 py-1 border border-slate-300 rounded text-center font-bold text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none" />
+                            </div>
+                        </div>
+
+                        <!-- NEW: SERIAL NO / BARCODE INPUT -->
+                        <div class="pt-2">
+                            <label class="text-xs font-bold text-slate-600 mb-1 block">Serial No / Barcode:</label>
+                            <div class="relative">
+                                <i data-lucide="barcode" class="w-5 h-5 absolute left-3 top-2.5 text-slate-400"></i>
+                                <input type="text" id="laptop-serial" placeholder="Scan or type serial number..."
+                                    class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 transition outline-none font-mono">
+                            </div>
+                        </div>
+
+                        <!-- Actions: Good / Damage -->
+                        <div class="flex gap-3 pt-3 border-t border-slate-100">
+                            <button onclick="toggleDamage('laptop', false)" id="btn-good-laptop"
+                                class="flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-green-600 text-white shadow-sm">Good</button>
+                            <button onclick="toggleDamage('laptop', true)" id="btn-damage-laptop"
+                                class="flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-slate-100 text-slate-600 border border-slate-300 hover:bg-slate-200">Damage</button>
+                        </div>
+
+                        <!-- DAMAGE REASON & PROOF BOX -->
+                        <div id="damage-box-laptop"
+                            class="hidden bg-red-50 border border-red-200 p-4 rounded-xl space-y-4 mt-2">
+                            <p class="text-xs font-bold text-red-800 uppercase tracking-wider mb-2">Select Reason:</p>
+                            <div class="flex flex-col gap-3 text-sm font-semibold text-red-900">
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="laptop-doa" class="w-4 h-4 text-red-600 rounded"> Dead on Arrival
+                                    (DOA)</label>
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="laptop-physical" class="w-4 h-4 text-red-600 rounded"> Physical
+                                    Damage</label>
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="laptop-missing" class="w-4 h-4 text-red-600 rounded"> Missing
+                                    Charger</label>
+                            </div>
+
+                            <div class="border-t border-red-200 pt-4">
+                                <input type="file" id="laptop-proof" class="hidden" accept="image/*"
+                                    onchange="markPhotoUploaded('laptop')">
+                                <button id="laptop-btn-wrapper"
+                                    onclick="document.getElementById('laptop-proof').click()"
+                                    class="w-full flex justify-center items-center gap-2 border-2 border-dashed border-red-400 bg-white text-red-700 font-bold py-2.5 rounded-lg hover:bg-red-100 transition shadow-sm">
+                                    <i id="laptop-btn-icon" data-lucide="camera" class="w-5 h-5"></i> <span
+                                        id="laptop-btn-text">Upload Proof</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: NORMAL COMPONENT -->
+                <div class="space-y-4">
+                    <div class="bg-slate-200 border border-slate-300 rounded-xl p-4 shadow-sm">
+                        <h3 class="font-bold text-slate-700 text-sm flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4"></i> Normal Component
+                        </h3>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+                        <!-- Item Details & Qty -->
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">ESP32 Microcontroller</h4>
+                                <p class="text-xs text-slate-500 mt-1">Expected Qty: 100</p>
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                                <label class="text-xs font-bold text-slate-600">Qty:</label>
+                                <input type="number" id="esp-qty" value="100"
+                                    class="w-16 px-2 py-1 border border-slate-300 rounded text-center font-bold text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none" />
+                            </div>
+                        </div>
+
+                        <!-- NEW: BATCH NO INPUT -->
+                        <div class="pt-2">
+                            <label class="text-xs font-bold text-slate-600 mb-1 block">Batch No:</label>
+                            <div class="relative">
+                                <i data-lucide="hash" class="w-5 h-5 absolute left-3 top-2.5 text-slate-400"></i>
+                                <input type="text" id="esp-batch" placeholder="Enter batch number..." value="#ESP-8821"
+                                    class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 transition outline-none font-mono">
+                            </div>
+                        </div>
+
+                        <!-- Actions: Good / Damage -->
+                        <div class="flex gap-3 pt-3 border-t border-slate-100">
+                            <button onclick="toggleDamage('esp', false)" id="btn-good-esp"
+                                class="flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-green-600 text-white shadow-sm">Good</button>
+                            <button onclick="toggleDamage('esp', true)" id="btn-damage-esp"
+                                class="flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-slate-100 text-slate-600 border border-slate-300 hover:bg-slate-200">Damage</button>
+                        </div>
+
+                        <!-- DAMAGE REASON & PROOF BOX -->
+                        <div id="damage-box-esp"
+                            class="hidden bg-red-50 border border-red-200 p-4 rounded-xl space-y-4 mt-2">
+                            <p class="text-xs font-bold text-red-800 uppercase tracking-wider mb-2">Select Reason:</p>
+                            <div class="flex flex-col gap-3 text-sm font-semibold text-red-900">
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="esp-bent" class="w-4 h-4 text-red-600 rounded"> Bent Pins</label>
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="esp-burn" class="w-4 h-4 text-red-600 rounded"> Burn Marks</label>
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                        id="esp-wrong" class="w-4 h-4 text-red-600 rounded"> Wrong Module</label>
+                            </div>
+
+                            <div class="border-t border-red-200 pt-4">
+                                <input type="file" id="esp-proof" class="hidden" accept="image/*"
+                                    onchange="markPhotoUploaded('esp')">
+                                <button id="esp-btn-wrapper" onclick="document.getElementById('esp-proof').click()"
+                                    class="w-full flex justify-center items-center gap-2 border-2 border-dashed border-red-400 bg-white text-red-700 font-bold py-2.5 rounded-lg hover:bg-red-100 transition shadow-sm">
+                                    <i id="esp-btn-icon" data-lucide="camera" class="w-5 h-5"></i> <span
+                                        id="esp-btn-text">Upload Proof</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM CONFIRM BUTTON -->
+            <div class="flex justify-end pt-4">
+                <button onclick="confirmOrder()"
+                    class="flex items-center gap-2 bg-blue-600 text-white font-bold px-10 py-3.5 rounded-xl hover:bg-blue-700 shadow-xl transition text-lg">
+                    <i data-lucide="check-circle" class="w-6 h-6"></i> Confirm Receipt & Generate GRN
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- HISTORY MODAL -->
+    <div id="history-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-[50]">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                    <i data-lucide="history" class="text-blue-600"></i> Goods Receipt Note (GRN) History
+                </h3>
+                <button onclick="toggleHistoryModal(false)"
+                    class="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
+            </div>
+
+            <div class="space-y-3 max-h-96 overflow-y-auto">
+                <div id="current-trip-history"
+                    class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex justify-between items-start text-sm transition-colors">
+                    <div class="w-full">
+                        <p class="font-bold text-slate-800 text-base">Current Delivery Tracking</p>
+                        <p id="mrn-display" class="text-xs text-blue-700 mt-1 font-bold">Generated Document: Pending...
+                        </p>
+                        <div id="damage-details-container"></div>
+                    </div>
+
+                    <div class="flex flex-col items-end gap-2 ml-4 shrink-0">
+                        <span id="trip-status-badge"
+                            class="bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full font-bold shadow-sm">Incomplete</span>
+                        <button id="btn-view-mrn" onclick="toggleMRNModal(true)"
+                            class="hidden text-xs bg-slate-800 text-white px-4 py-2 rounded-lg flex items-center gap-1 hover:bg-slate-900 shadow">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> View GRN
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleHistoryModal(false)"
+                    class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW GRN DETAILED MODAL -->
+    <div id="mrn-details-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[60]">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-8 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-start border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Goods Receipt Note (GRN)</h2>
+                    <p id="mrn-modal-title" class="text-sm font-bold text-blue-600 mt-1">GRN-NUMBER</p>
+                </div>
+                <button onclick="toggleMRNModal(false)"
+                    class="text-slate-400 hover:text-slate-700 font-bold text-xl">✕</button>
+            </div>
+
+            <div class="space-y-4">
+                <table
+                    class="w-full text-left text-sm border-collapse border border-slate-200 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-slate-100 border-b border-slate-200">
+                            <th class="p-3 font-bold text-slate-700">Hardware Description</th>
+                            <th class="p-3 text-center font-bold text-slate-700">Expected</th>
+                            <th class="p-3 text-center font-bold text-slate-700">Received</th>
+                            <th class="p-3 text-center font-bold text-slate-700">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mrn-table-body" class="divide-y divide-slate-200">
+                    </tbody>
+                </table>
+
+                <div id="mrn-damage-summary" class="bg-red-50 border border-red-200 p-4 rounded-xl hidden">
+                    <h4 class="font-bold text-red-700 text-sm mb-2 flex items-center gap-2"><i
+                            data-lucide="alert-triangle" class="w-4 h-4"></i> RMA / Return Hardware Summary</h4>
+                    <ul id="mrn-damage-list" class="text-xs text-red-700 list-disc list-inside space-y-1 font-medium">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-4 border-t border-slate-200">
+                <button
+                    class="px-5 py-2.5 border border-slate-300 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2 transition">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Print GRN
+                </button>
+                <button onclick="toggleMRNModal(false)"
+                    class="bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        lucide.createIcons();
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        }
+
+        function toggleDamage(itemId, isDamaged) {
+            const btnGood = document.getElementById(`btn-good-${itemId}`);
+            const btnDamage = document.getElementById(`btn-damage-${itemId}`);
+            const damageBox = document.getElementById(`damage-box-${itemId}`);
+
+            if (isDamaged) {
+                btnDamage.className = "flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-red-600 text-white shadow-sm border-transparent";
+                btnGood.className = "flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-slate-100 text-slate-600 border border-slate-300 hover:bg-slate-200";
+                damageBox.classList.remove('hidden');
+            } else {
+                btnGood.className = "flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-green-600 text-white shadow-sm border-transparent";
+                btnDamage.className = "flex-1 py-2.5 rounded-lg font-bold text-sm transition bg-slate-100 text-slate-600 border border-slate-300 hover:bg-slate-200";
+                damageBox.classList.add('hidden');
+            }
+        }
+
+        function markPhotoUploaded(itemId) {
+            const wrapper = document.getElementById(`${itemId}-btn-wrapper`);
+            const text = document.getElementById(`${itemId}-btn-text`);
+            const icon = document.getElementById(`${itemId}-btn-icon`);
+
+            text.innerText = "Proof Attached!";
+            wrapper.className = "w-full flex justify-center items-center gap-2 border-2 border-green-500 bg-green-50 text-green-700 font-bold py-2.5 rounded-lg transition shadow-sm";
+            icon.setAttribute('data-lucide', 'check-circle');
+            lucide.createIcons();
+        }
+
+        function toggleHistoryModal(show) {
+            const modal = document.getElementById('history-modal');
+            show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
+        }
+
+        function toggleMRNModal(show) {
+            const modal = document.getElementById('mrn-details-modal');
+            show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
+        }
+
+        function confirmOrder() {
+            const today = new Date();
+            const dateString = today.getFullYear().toString() + (today.getMonth() + 1).toString().padStart(2, '0') + today.getDate().toString().padStart(2, '0');
+            const autoMRN = "GRN-" + dateString + "-" + Math.floor(Math.random() * 1000);
+
+            let damageReport = [];
+            let mrnTableHTML = "";
+            let hasDamage = false;
+
+            const laptopQty = document.getElementById('laptop-qty').value;
+            const laptopSerial = document.getElementById('laptop-serial').value || 'Not Provided';
+            const espQty = document.getElementById('esp-qty').value;
+            const espBatch = document.getElementById('esp-batch').value || 'Not Provided';
+
+            let laptopStatus = "Good";
+            if (!document.getElementById('damage-box-laptop').classList.contains('hidden')) {
+                let reasons = [];
+                if (document.getElementById('laptop-doa').checked) reasons.push("DOA");
+                if (document.getElementById('laptop-physical').checked) reasons.push("Physical Damage");
+                if (document.getElementById('laptop-missing').checked) reasons.push("Missing Charger");
+
+                let attached = document.getElementById('laptop-proof').files.length > 0 ? " [Image Attached]" : "";
+                damageReport.push(`MSI Cyborg 15 (S/N: ${laptopSerial}): ${reasons.join(', ') || 'Reason not specified'}${attached}`);
+                laptopStatus = "RMA";
+                hasDamage = true;
+            }
+
+            mrnTableHTML += `
+        <tr>
+            <td class="p-3 font-semibold text-slate-800">MSI Cyborg 15 Laptop<br><span class="text-xs text-slate-500 font-mono font-normal">S/N: ${laptopSerial}</span></td>
+            <td class="p-3 text-center text-slate-600">5</td>
+            <td class="p-3 text-center font-bold ${laptopQty != 5 ? 'text-amber-600' : 'text-slate-800'}">${laptopQty}</td>
+            <td class="p-3 text-center"><span class="px-2 py-1 rounded-md text-xs font-bold ${laptopStatus === 'Good' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-red-100 text-red-700 border border-red-200'}">${laptopStatus}</span></td>
+        </tr>`;
+
+            let espStatus = "Good";
+            if (!document.getElementById('damage-box-esp').classList.contains('hidden')) {
+                let reasons = [];
+                if (document.getElementById('esp-bent').checked) reasons.push("Bent Pins");
+                if (document.getElementById('esp-burn').checked) reasons.push("Burn Marks");
+                if (document.getElementById('esp-wrong').checked) reasons.push("Wrong Module");
+
+                let attached = document.getElementById('esp-proof').files.length > 0 ? " [Image Attached]" : "";
+                damageReport.push(`ESP32 Module (Batch: ${espBatch}): ${reasons.join(', ') || 'Reason not specified'}${attached}`);
+                espStatus = "RMA";
+                hasDamage = true;
+            }
+
+            mrnTableHTML += `
+        <tr>
+            <td class="p-3 font-semibold text-slate-800">ESP32 Microcontroller<br><span class="text-xs text-slate-500 font-mono font-normal">Batch: ${espBatch}</span></td>
+            <td class="p-3 text-center text-slate-600">100</td>
+            <td class="p-3 text-center font-bold ${espQty != 100 ? 'text-amber-600' : 'text-slate-800'}">${espQty}</td>
+            <td class="p-3 text-center"><span class="px-2 py-1 rounded-md text-xs font-bold ${espStatus === 'Good' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-red-100 text-red-700 border border-red-200'}">${espStatus}</span></td>
+        </tr>`;
+
+            const badge = document.getElementById('trip-status-badge');
+            const historyBox = document.getElementById('current-trip-history');
+            document.getElementById('mrn-display').innerText = `Generated Document: ${autoMRN}`;
+            document.getElementById('btn-view-mrn').classList.remove('hidden');
+
+            if (hasDamage) {
+                badge.className = "bg-red-100 text-red-700 text-xs px-3 py-1.5 rounded-full font-bold shadow-sm";
+                badge.innerText = "Processed (RMA Items)";
+                historyBox.className = "bg-red-50 border border-red-200 p-4 rounded-xl flex justify-between items-start text-sm transition-colors";
+                document.getElementById('damage-details-container').innerHTML = `
+              <div class="mt-4 pt-3 border-t border-red-200">
+                  <p class="text-xs font-bold text-red-700 mb-1">RMA Hardware Reported:</p>
+                  <ul class="text-xs text-red-600 list-disc list-inside">
+                      ${damageReport.map(report => `<li>${report}</li>`).join('')}
+                  </ul>
+              </div>`;
+            } else {
+                badge.className = "bg-green-100 text-green-700 text-xs px-3 py-1.5 rounded-full font-bold shadow-sm";
+                badge.innerText = "Fully Received";
+                historyBox.className = "bg-green-50 border border-green-200 p-4 rounded-xl flex justify-between items-start text-sm transition-colors";
+                document.getElementById('damage-details-container').innerHTML = '';
+            }
+
+            document.getElementById('mrn-modal-title').innerText = autoMRN;
+            document.getElementById('mrn-table-body').innerHTML = mrnTableHTML;
+
+            const damageSummaryBox = document.getElementById('mrn-damage-summary');
+            if (hasDamage) {
+                damageSummaryBox.classList.remove('hidden');
+                document.getElementById('mrn-damage-list').innerHTML = damageReport.map(report => `<li>${report}</li>`).join('');
+            } else {
+                damageSummaryBox.classList.add('hidden');
+            }
+
+            alert(`Delivery Confirmed!\nGRN Generated: ${autoMRN}`);
+            toggleHistoryModal(true);
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>
