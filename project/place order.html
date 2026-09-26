@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waypoint Portal - Place Order</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- වම්පස Sidebar සංචාලනය -->
+    <aside id="sidebar"
+        class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between transition-all duration-300">
+        <div>
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white font-bold p-2 rounded-lg">Logo</div>
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-sm">Waypoint Portal</h2>
+                        <p class="text-xs text-gray-500">Manager: Kasun Kuma</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="p-4 space-y-1 text-sm font-medium text-gray-600">
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-semibold text-left transition">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Place Order
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="truck" class="w-5 h-5"></i> Receive Delivery
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="trash-2" class="w-5 h-5"></i> Daily Wastage
+                </button>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+            <div class="text-xs font-semibold text-gray-700 bg-gray-50 px-3 py-2 rounded-lg border text-center">
+                📍 Colombo Branch
+            </div>
+        </div>
+    </aside>
+
+    <!-- ප්‍රධාන අන්තර්ගතය -->
+    <div class="flex-1 flex flex-col min-h-screen">
+
+        <!-- ඉහළ තීරුව (Top Bar) -->
+        <header class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleSidebar()"
+                    class="text-gray-600 hover:text-blue-600 p-1 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-lg font-bold text-gray-800">Place Order</h1>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button
+                    class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-gray-300">P.
+                    Schedule</button>
+                <button
+                    class="bg-red-100 text-red-700 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-red-200">Cancel
+                    Order</button>
+                <button
+                    class="bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-gray-900">Order
+                    History</button>
+            </div>
+        </header>
+
+        <!-- ප්‍රධාන කොටස -->
+        <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+
+            <!-- ඇණවුම් කිරීමේ පෝරමය -->
+            <div class="bg-white p-6 rounded-xl border shadow-sm space-y-4">
+                <h3 class="font-bold text-gray-800 text-sm border-b pb-2 flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="text-blue-600 w-4 h-4"></i> Create New Order (Based on Sales)
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Search Item & Price:</label>
+                        <input type="text" placeholder="Search product..."
+                            class="w-full px-3 py-2 border rounded-lg text-sm bg-white" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Quantity:</label>
+                        <input type="number" value="10"
+                            class="w-full px-3 py-2 border rounded-lg text-sm bg-white text-center font-bold" />
+                    </div>
+                    <div>
+                        <button
+                            class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm">
+                            + Add Item to Bill
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- බිල්පත් සාරාංශය සහ ඇස්තමේන්තුගත එකතුව -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Bill Summary -->
+                <div class="lg:col-span-2 bg-white p-5 rounded-xl border shadow-sm space-y-4">
+                    <h4 class="font-bold text-gray-800 text-sm border-b pb-2">Current Bill Summary</h4>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center p-2.5 bg-gray-50 rounded border">
+                            <span>🥛 Fresh Milk (x10L @ Rs. 350)</span>
+                            <span class="font-bold">Rs. 3,500</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2.5 bg-gray-50 rounded border">
+                            <span>🥕 Carrot (x5kg @ Rs. 250)</span>
+                            <span class="font-bold">Rs. 1,250</span>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <button
+                            class="bg-amber-100 text-amber-800 font-semibold px-3 py-1.5 rounded text-xs hover:bg-amber-200">
+                            Change Values / Modify Bill
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estimated Total -->
+                <div class="bg-white p-5 rounded-xl border shadow-sm flex flex-col justify-between space-y-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm border-b pb-2">Order Total</h4>
+                        <p class="text-xs text-gray-500 mt-2">Estimated Total (ETD):</p>
+                        <p class="text-2xl font-bold text-blue-600 mt-1">Rs. 4,750</p>
+                    </div>
+                    <button onclick="alert('Order successfully submitted!')"
+                        class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition text-sm shadow-md">
+                        Confirm & Submit Order
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>

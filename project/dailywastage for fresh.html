@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waypoint Portal - Daily Wastage & Smart Forecast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- LEFT SIDEBAR NAVIGATION (With ID to toggle) -->
+    <aside id="sidebar"
+        class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between transition-all duration-300">
+        <div>
+            <!-- Logo / Portal Info -->
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white font-bold p-2 rounded-lg">Logo</div>
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-sm">Waypoint Portal</h2>
+                        <p class="text-xs text-gray-500">Manager: Kasun Kuma</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Links -->
+            <nav class="p-4 space-y-1 text-sm font-medium text-gray-600">
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Place Order
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="truck" class="w-5 h-5"></i> Receive Delivery
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-semibold text-left transition">
+                    <i data-lucide="trash-2" class="w-5 h-5"></i> Daily Wastage & Forecast
+                </button>
+            </nav>
+        </div>
+
+        <!-- Branch Info at Bottom of Sidebar -->
+        <div class="p-4 border-t border-gray-200">
+            <div class="text-xs font-semibold text-gray-700 bg-gray-50 px-3 py-2 rounded-lg border text-center">
+                📍 Colombo Branch
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="flex-1 flex flex-col min-h-screen">
+
+        <!-- TOP BAR -->
+        <header class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <!-- SIDEBAR TOGGLE BUTTON -->
+                <button onclick="toggleSidebar()"
+                    class="text-gray-600 hover:text-blue-600 p-1 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-lg font-bold text-gray-800">Daily Wastage & Smart Forecast</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button class="relative text-gray-600 hover:text-blue-600">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">2</span>
+                </button>
+                <div class="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-6 max-w-5xl mx-auto w-full space-y-6">
+
+            <!-- 1. MORNING ARRIVED STOCK & SALES SUMMARY -->
+            <div class="bg-white rounded-xl shadow-sm border p-6 space-y-4">
+                <h3 class="font-bold text-gray-800 text-lg flex items-center gap-2 border-b pb-2">
+                    <i data-lucide="sun" class="text-amber-500"></i> Morning Received Stock & Sales Overview (Today)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg border">
+                        <p class="text-xs text-gray-500 font-bold">🥛 Fresh Milk</p>
+                        <p class="text-sm font-semibold mt-1">Arrived: <span id="arrived-milk">80</span>L | Sold: <span
+                                id="sold-milk">70</span>L</p>
+                        <p class="text-xs text-blue-600 font-bold mt-1">Unit Price: Rs. 350/L</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border">
+                        <p class="text-xs text-gray-500 font-bold">🥗 Lettuce Packets</p>
+                        <p class="text-sm font-semibold mt-1">Arrived: <span id="arrived-lettuce">35</span>kg | Sold:
+                            <span id="sold-lettuce">30</span>kg</p>
+                        <p class="text-xs text-blue-600 font-bold mt-1">Unit Price: Rs. 600/kg</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border">
+                        <p class="text-xs text-gray-500 font-bold">🥕 Carrot</p>
+                        <p class="text-sm font-semibold mt-1">Arrived: <span id="arrived-carrot">45</span>kg | Sold:
+                            <span id="sold-carrot">35</span>kg</p>
+                        <p class="text-xs text-blue-600 font-bold mt-1">Unit Price: Rs. 250/kg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. EOD ROTTEN / DAMAGED ENTRY & SMART REORDER GENERATOR -->
+            <div class="bg-white rounded-xl shadow-sm border p-6 space-y-4">
+                <h3 class="font-bold text-gray-800 text-lg flex items-center gap-2 border-b pb-2">
+                    <i data-lucide="trash-2" class="text-red-600"></i> End of Day (EOD) Rotten / Damaged Entry & Smart
+                    Reorder
+                </h3>
+                <p class="text-xs text-gray-500">Enter spoiled or damaged quantities below. The system automatically
+                    calculates tomorrow's required order, which you can modify directly.</p>
+
+                <div class="space-y-3">
+                    <!-- Milk Wastage & Reorder -->
+                    <div
+                        class="bg-gray-50 p-4 rounded-lg border flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="w-full md:w-1/3">
+                            <h4 class="font-bold text-gray-800 text-sm">🥛 Fresh Milk</h4>
+                            <p class="text-xs text-gray-500">Remaining Unsold: <span id="remaining-milk">10</span>L</p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-4 w-full md:w-2/3 justify-end">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-600">Rotten Qty:</span>
+                                <input id="wastage-milk" type="number" min="0" value="2"
+                                    oninput="calculateSmartReorder()"
+                                    class="w-20 px-2 py-1 border rounded text-center text-sm font-semibold bg-white" />
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg">
+                                <span class="text-xs text-amber-900 font-bold">Smart Reorder (Tom.):</span>
+                                <input id="reorder-milk" type="number" min="0" value="72"
+                                    class="w-20 px-2 py-1 border border-amber-300 rounded text-center text-sm font-bold bg-white text-blue-600" />
+                                <span class="text-xs text-amber-800">L</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lettuce Wastage & Reorder -->
+                    <div
+                        class="bg-gray-50 p-4 rounded-lg border flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="w-full md:w-1/3">
+                            <h4 class="font-bold text-gray-800 text-sm">🥗 Lettuce Packets</h4>
+                            <p class="text-xs text-gray-500">Remaining Unsold: <span id="remaining-lettuce">5</span>kg
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-4 w-full md:w-2/3 justify-end">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-600">Rotten Qty:</span>
+                                <input id="wastage-lettuce" type="number" min="0" value="2"
+                                    oninput="calculateSmartReorder()"
+                                    class="w-20 px-2 py-1 border rounded text-center text-sm font-semibold bg-white" />
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg">
+                                <span class="text-xs text-amber-900 font-bold">Smart Reorder (Tom.):</span>
+                                <input id="reorder-lettuce" type="number" min="0" value="32"
+                                    class="w-20 px-2 py-1 border border-amber-300 rounded text-center text-sm font-bold bg-white text-blue-600" />
+                                <span class="text-xs text-amber-800">kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carrot Wastage & Reorder -->
+                    <div
+                        class="bg-gray-50 p-4 rounded-lg border flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="w-full md:w-1/3">
+                            <h4 class="font-bold text-gray-800 text-sm">🥕 Carrot</h4>
+                            <p class="text-xs text-gray-500">Remaining Unsold: <span id="remaining-carrot">10</span>kg
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-4 w-full md:w-2/3 justify-end">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-600">Rotten Qty:</span>
+                                <input id="wastage-carrot" type="number" min="0" value="3"
+                                    oninput="calculateSmartReorder()"
+                                    class="w-20 px-2 py-1 border rounded text-center text-sm font-semibold bg-white" />
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg">
+                                <span class="text-xs text-amber-900 font-bold">Smart Reorder (Tom.):</span>
+                                <input id="reorder-carrot" type="number" min="0" value="38"
+                                    class="w-20 px-2 py-1 border border-amber-300 rounded text-center text-sm font-bold bg-white text-blue-600" />
+                                <span class="text-xs text-amber-800">kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end pt-2">
+                <button id="submit-btn" onclick="submitSmartOrder()"
+                    class="flex items-center gap-2 bg-green-600 text-white font-bold px-8 py-3 rounded-lg hover:bg-green-700 shadow-lg transition">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i> <span id="btn-text">Submit Smart Reorder to
+                        Depot</span>
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            calculateSmartReorder();
+        });
+
+        // Function to Hide/Show Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function calculateSmartReorder() {
+            let wMilk = parseInt(document.getElementById('wastage-milk').value) || 0;
+            let wLettuce = parseInt(document.getElementById('wastage-lettuce').value) || 0;
+            let wCarrot = parseInt(document.getElementById('wastage-carrot').value) || 0;
+
+            let soldMilk = parseInt(document.getElementById('sold-milk').innerText) || 70;
+            let soldLettuce = parseInt(document.getElementById('sold-lettuce').innerText) || 30;
+            let soldCarrot = parseInt(document.getElementById('sold-carrot').innerText) || 35;
+
+            let smartMilk = soldMilk + wMilk;
+            let smartLettuce = soldLettuce + wLettuce;
+            let smartCarrot = soldCarrot + wCarrot;
+
+            document.getElementById('reorder-milk').value = smartMilk;
+            document.getElementById('reorder-lettuce').value = smartLettuce;
+            document.getElementById('reorder-carrot').value = smartCarrot;
+        }
+
+        function submitSmartOrder() {
+            const btn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+
+            btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+            btn.classList.add('bg-blue-600', 'cursor-not-allowed');
+            btnText.innerText = "Successful! Order Submitted";
+
+            let arrivedMilk = parseInt(document.getElementById('arrived-milk').innerText) || 80;
+            let soldMilk = parseInt(document.getElementById('sold-milk').innerText) || 70;
+            let remMilk = arrivedMilk - soldMilk;
+
+            let arrivedLettuce = parseInt(document.getElementById('arrived-lettuce').innerText) || 35;
+            let soldLettuce = parseInt(document.getElementById('sold-lettuce').innerText) || 30;
+            let remLettuce = arrivedLettuce - soldLettuce;
+
+            let arrivedCarrot = parseInt(document.getElementById('arrived-carrot').innerText) || 45;
+            let soldCarrot = parseInt(document.getElementById('sold-carrot').innerText) || 35;
+            let remCarrot = arrivedCarrot - soldCarrot;
+
+            document.getElementById('arrived-milk').innerText = remMilk;
+            document.getElementById('sold-milk').innerText = 0;
+
+            document.getElementById('arrived-lettuce').innerText = remLettuce;
+            document.getElementById('sold-lettuce').innerText = 0;
+
+            document.getElementById('arrived-carrot').innerText = remCarrot;
+            document.getElementById('sold-carrot').innerText = 0;
+
+            document.getElementById('remaining-milk').innerText = remMilk;
+            document.getElementById('remaining-lettuce').innerText = remLettuce;
+            document.getElementById('remaining-carrot').innerText = remCarrot;
+
+            setTimeout(() => {
+                btn.classList.remove('bg-blue-600', 'cursor-not-allowed');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                btnText.innerText = "Submit Smart Reorder to Depot";
+            }, 2500);
+        }
+    </script>
+</body>
+
+</html>
