@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Store - Adjustments & RMAs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <aside id="sidebar"
+        class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between transition-all duration-300 z-10">
+        <div>
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white font-bold p-2 rounded-lg">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-sm">Tech Store</h2>
+                        <p class="text-xs text-gray-500">Manager: Kasun Kuma</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="p-4 space-y-1 text-sm font-medium text-gray-600">
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Place Order
+                </button>
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
+                    <i data-lucide="truck" class="w-5 h-5"></i> Receive Delivery
+                </button>
+                <!-- Active Tab -->
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-semibold text-left transition border border-blue-100 shadow-sm">
+                    <i data-lucide="tool" class="w-5 h-5"></i> Adjustments & RMAs
+                </button>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+            <div
+                class="text-xs font-semibold text-gray-700 bg-gray-50 px-3 py-2 rounded-lg border text-center flex items-center justify-center gap-1">
+                📍 Colombo Branch
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="flex-1 flex flex-col min-h-screen bg-white">
+        <!-- TOP BAR -->
+        <header class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleSidebar()"
+                    class="text-gray-600 hover:text-blue-600 p-1 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-lg font-bold text-gray-800">Hardware Adjustments & RMAs</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <!-- Notifications & Profile -->
+                <button class="relative text-gray-600 hover:text-blue-600 transition">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">3</span>
+                </button>
+                <div
+                    class="w-9 h-9 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-bold border-2 border-white shadow-sm cursor-pointer hover:bg-gray-300 transition">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+
+            <!-- HISTORY BUTTONS (Right aligned as per sketch) -->
+            <div class="flex justify-end gap-3 mb-2">
+                <button onclick="toggleDamageHistoryModal(true)"
+                    class="flex items-center gap-2 bg-red-50 text-red-700 border border-red-200 px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-red-100 transition shadow-sm">
+                    <i data-lucide="alert-triangle" class="w-4 h-4"></i> Pending RMAs
+                </button>
+                <button onclick="toggleHistoryModal(true)"
+                    class="flex items-center gap-2 bg-gray-800 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-900 transition shadow-sm">
+                    <i data-lucide="history" class="w-4 h-4"></i> Adjustment Logs
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- LEFT COLUMN -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- SEARCH & CURRENT STOCK BOX -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 relative">
+                                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-gray-400"></i>
+                                <input type="text" placeholder="Name / Serial No / Search..."
+                                    class="w-full pl-9 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm font-medium">
+                            </div>
+
+                            <div
+                                class="bg-blue-50 border border-blue-200 rounded-lg p-3 flex-1 flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs text-gray-500 font-semibold">Selected Item</p>
+                                    <p class="text-sm font-bold text-gray-800" id="selected-item-name">MSI Cyborg 15
+                                        Laptop</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-gray-500 font-semibold">Current Stock</p>
+                                    <p class="text-lg font-bold text-gray-800">12</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ADJUSTMENT DETAILS BOX -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+                        <h3 class="font-bold text-gray-800 flex items-center gap-2 border-b pb-2"><i
+                                data-lucide="settings-2" class="w-4 h-4 text-blue-600"></i> Adjustment Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-gray-700">Quantity:</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="adj-qty" value="1" min="1"
+                                        class="w-24 px-3 py-1.5 border border-gray-300 rounded-lg text-center font-bold text-gray-800 focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-gray-700">Reason / Category:</label>
+                                <select id="adj-reason"
+                                    class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50">
+                                    <option value="" disabled selected>Select Reason...</option>
+                                    <option value="Customer Warranty Claim (RMA)">Customer Warranty Claim (RMA)</option>
+                                    <option value="Dead on Arrival (DOA)">Dead on Arrival (DOA)</option>
+                                    <option value="Store Display Damage">Store Display Damage</option>
+                                    <option value="Inventory Mismatch">Inventory Mismatch</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAULT WINDOW BOX -->
+                    <div class="bg-red-50 rounded-xl shadow-sm border border-red-200 p-6 space-y-4">
+                        <h3 class="font-bold text-red-800 flex items-center gap-2 border-b border-red-200 pb-2"><i
+                                data-lucide="alert-circle" class="w-4 h-4 text-red-600"></i> Fault Window (For RMAs)
+                        </h3>
+                        <div class="space-y-4 pt-2">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-red-900">Serial No / MAC Address:</label>
+                                <input type="text" id="fault-serial" placeholder="Enter Serial No..."
+                                    class="w-full px-3 py-2 border border-red-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-red-500 outline-none font-mono">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-red-900">Fault Description:</label>
+                                <input type="text" id="fault-desc" placeholder="Describe the fault clearly..."
+                                    class="w-full px-3 py-2 border border-red-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-red-500 outline-none">
+                            </div>
+                        </div>
+                        <div class="pt-4 flex justify-end">
+                            <button onclick="addToRMAList()"
+                                class="flex items-center gap-2 bg-red-600 text-white font-bold px-6 py-2 rounded-lg hover:bg-red-700 transition text-sm shadow-md border-2 border-transparent">
+                                <i data-lucide="wrench" class="w-4 h-4"></i> Send to RMA
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN (Critical Stock Alerts) -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div
+                        class="bg-white rounded-xl shadow-sm border border-amber-200 overflow-hidden flex flex-col h-full">
+                        <div class="bg-amber-50 p-4 border-b border-amber-200 flex items-center gap-2">
+                            <i data-lucide="battery-warning" class="w-5 h-5 text-amber-600"></i>
+                            <h3 class="font-bold text-amber-800 text-sm">Critical Stock Alert</h3>
+                        </div>
+
+                        <div class="p-4 flex-1 space-y-4">
+                            <!-- Alert Item 1 -->
+                            <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg flex flex-col gap-2">
+                                <div>
+                                    <p class="text-sm font-bold text-gray-800">Arduino Nano V3.0</p>
+                                </div>
+                                <div class="flex justify-between items-center mt-1">
+                                    <p class="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">Qty: 4</p>
+                                    <button
+                                        class="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded shadow hover:bg-blue-700 transition flex items-center gap-1">
+                                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> Order
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Alert Item 2 -->
+                            <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg flex flex-col gap-2">
+                                <div>
+                                    <p class="text-sm font-bold text-gray-800">Raspberry Pi 4 Model B</p>
+                                </div>
+                                <div class="flex justify-between items-center mt-1">
+                                    <p class="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">Qty: 1</p>
+                                    <button
+                                        class="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded shadow hover:bg-blue-700 transition flex items-center gap-1">
+                                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> Order
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM ACTION BUTTON -->
+            <div class="flex justify-end pt-4 pb-6">
+                <button onclick="updateInventory()"
+                    class="flex items-center gap-2 bg-gray-800 text-white font-bold px-10 py-3 rounded-lg hover:bg-gray-900 shadow-lg transition">
+                    <i data-lucide="database" class="w-5 h-5"></i> Update Inventory
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- GENERAL ADJUSTMENT HISTORY MODAL -->
+    <div id="history-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[50]">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
+                    <i data-lucide="history" class="text-blue-600"></i> Stock Adjustment Logs
+                </h3>
+                <button onclick="toggleHistoryModal(false)"
+                    class="text-gray-500 hover:text-gray-700 font-bold text-lg">✕</button>
+            </div>
+            <div class="space-y-3 max-h-96 overflow-y-auto" id="history-list">
+                <p class="text-sm text-gray-500 text-center py-4">No recent stock adjustments recorded.</p>
+            </div>
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleHistoryModal(false)"
+                    class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RMA & FAULTY HARDWARE HISTORY MODAL -->
+    <div id="damage-history-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-red-700 flex items-center gap-2">
+                    <i data-lucide="tool" class="text-red-600"></i> Pending RMA & Faulty Hardware
+                </h3>
+                <button onclick="toggleDamageHistoryModal(false)"
+                    class="text-gray-500 hover:text-gray-700 font-bold text-lg">✕</button>
+            </div>
+            <div class="space-y-3 max-h-96 overflow-y-auto" id="damage-history-list">
+                <p class="text-sm text-gray-500 text-center py-4">No pending RMAs or faulty items.</p>
+            </div>
+            <div class="flex justify-end gap-3 pt-2 border-t border-gray-100">
+                <button
+                    class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Export RMA Report
+                </button>
+                <button onclick="toggleDamageHistoryModal(false)"
+                    class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-900">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        lucide.createIcons();
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        }
+
+        function toggleHistoryModal(show) {
+            const modal = document.getElementById('history-modal');
+            show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
+        }
+
+        function toggleDamageHistoryModal(show) {
+            const modal = document.getElementById('damage-history-modal');
+            show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
+        }
+
+        // FUNCTION FOR 'SEND TO RMA' BUTTON
+        function addToRMAList() {
+            const qty = document.getElementById('adj-qty').value;
+            const reason = document.getElementById('adj-reason').value;
+            const serial = document.getElementById('fault-serial').value;
+            const faultDesc = document.getElementById('fault-desc').value;
+            const itemName = document.getElementById('selected-item-name').innerText;
+
+            if (!reason) {
+                alert("Please select a Reason / Category from Adjustment Details.");
+                return;
+            }
+            if (!serial || !faultDesc) {
+                alert("Please fill in both Serial No and Fault Description in the Fault Window.");
+                return;
+            }
+
+            const damageList = document.getElementById('damage-history-list');
+
+            if (damageList.innerText.includes("No pending RMAs")) {
+                damageList.innerHTML = '';
+            }
+
+            const today = new Date();
+            const timeString = today.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateString = today.toLocaleDateString();
+
+            const newDamageRecord = `
+        <div class="bg-red-50 border border-red-200 p-4 rounded-lg flex justify-between items-start text-sm">
+          <div>
+            <p class="font-bold text-gray-900 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-gray-500"></i> ${itemName}</p>
+            <p class="text-xs text-gray-600 mt-1 font-mono bg-white inline-block px-2 py-0.5 border rounded">S/N: ${serial}</p>
+            <p class="text-xs text-red-700 mt-2 font-semibold">Issue: ${reason}</p>
+            <p class="text-xs text-gray-600 mt-1 italic">Fault: ${faultDesc}</p>
+            <p class="text-xs text-gray-400 mt-2">${dateString} at ${timeString}</p>
+          </div>
+          <div class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs shrink-0 shadow-sm">
+            ${qty} Units (RMA)
+          </div>
+        </div>
+      `;
+
+            damageList.innerHTML = newDamageRecord + damageList.innerHTML;
+            lucide.createIcons();
+
+            alert(`${qty} units of ${itemName} have been moved to the RMA List!`);
+
+            // Clear inputs
+            document.getElementById('adj-qty').value = 1;
+            document.getElementById('adj-reason').value = "";
+            document.getElementById('fault-serial').value = "";
+            document.getElementById('fault-desc').value = "";
+        }
+
+        // FUNCTION FOR 'UPDATE INVENTORY' BUTTON (General adjustments)
+        function updateInventory() {
+            const qty = document.getElementById('adj-qty').value;
+            const reason = document.getElementById('adj-reason').value;
+            const itemName = document.getElementById('selected-item-name').innerText;
+
+            if (!reason) {
+                alert("Please select a Reason / Category for the adjustment.");
+                return;
+            }
+
+            const historyList = document.getElementById('history-list');
+
+            if (historyList.innerText.includes("No recent")) {
+                historyList.innerHTML = '';
+            }
+
+            const today = new Date();
+            const timeString = today.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const newRecord = `
+        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg flex justify-between items-center text-sm">
+          <div>
+            <p class="font-bold text-gray-800">${itemName}</p>
+            <p class="text-xs text-gray-500 mt-1">Reason: <span class="font-semibold text-amber-600">${reason}</span> | Logged: ${timeString}</p>
+          </div>
+          <div class="bg-gray-200 text-gray-700 px-3 py-1 rounded font-bold">
+            -${qty} Units
+          </div>
+        </div>
+      `;
+
+            historyList.innerHTML = newRecord + historyList.innerHTML;
+
+            alert(`Inventory Database Updated Successfully!\nReduced ${qty} units of ${itemName} due to ${reason}.`);
+
+            // Clear inputs
+            document.getElementById('adj-qty').value = 1;
+            document.getElementById('adj-reason').value = "";
+        }
+    </script>
+</body>
+
+</html>
