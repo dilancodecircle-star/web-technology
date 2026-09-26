@@ -4,28 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Waypoint Portal - Receive Delivery & History</title>
+  <title>Fresh Store - Receive Delivery & History</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
   <!-- LEFT SIDEBAR NAVIGATION -->
   <aside id="sidebar"
-    class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between transition-all duration-300">
+    class="w-full md:w-64 bg-white border-r border-gray-200 flex flex-col justify-between transition-all duration-300 z-20">
     <div>
-      <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+      <div class="p-4 md:p-6 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center space-x-3">
           <div class="bg-blue-600 text-white font-bold p-2 rounded-lg">Logo</div>
           <div>
-            <h2 class="font-bold text-gray-800 text-sm">Waypoint Portal</h2>
+            <h2 class="font-bold text-gray-800 text-sm">Fresh Store</h2>
             <p class="text-xs text-gray-500">Manager: Kasun Kuma</p>
           </div>
         </div>
       </div>
 
-      <nav class="p-4 space-y-1 text-sm font-medium text-gray-600">
+      <nav class="p-3 md:p-4 space-y-1 text-sm font-medium text-gray-600">
         <button
           class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 hover:text-blue-600 text-left transition">
           <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
@@ -53,41 +53,43 @@
   </aside>
 
   <!-- MAIN CONTENT WRAPPER -->
-  <div class="flex-1 flex flex-col min-h-screen">
+  <div class="flex-1 flex flex-col min-h-screen w-full">
 
     <!-- TOP BAR -->
-    <header class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
-      <div class="flex items-center space-x-4">
+    <header
+      class="bg-white border-b border-gray-200 px-3 md:px-6 py-3 md:py-4 flex flex-wrap justify-between items-center gap-2 shadow-sm">
+      <div class="flex items-center space-x-2 md:space-x-4">
         <button onclick="toggleSidebar()"
           class="text-gray-600 hover:text-blue-600 p-1 rounded-lg hover:bg-gray-100 transition">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
-        <h1 class="text-lg font-bold text-gray-800">Receive Delivery</h1>
+        <h1 class="text-sm md:text-lg font-bold text-gray-800">Receive Delivery</h1>
       </div>
 
-      <div class="flex items-center space-x-4">
-        <!-- HISTORY BUTTON -->
+      <div class="flex items-center space-x-2 md:space-x-3">
         <button onclick="toggleHistoryModal(true)"
-          class="flex items-center gap-2 bg-gray-800 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-900 transition">
-          <i data-lucide="history" class="w-4 h-4"></i> Delivery History
+          class="flex items-center gap-1.5 bg-gray-800 text-white px-2.5 md:px-4 py-1.5 rounded-lg text-[11px] md:text-xs font-semibold hover:bg-gray-900 transition">
+          <i data-lucide="history" class="w-3.5 h-3.5"></i> <span>History</span>
         </button>
         <button class="relative text-gray-600 hover:text-blue-600">
           <i data-lucide="bell" class="w-5 h-5"></i>
           <span
-            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">2</span>
+            class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
         </button>
-        <div class="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold">
+        <div
+          class="w-8 h-8 md:w-9 md:h-9 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold">
           <i data-lucide="user" class="w-4 h-4"></i>
         </div>
       </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+    <main class="flex-1 p-3 md:p-6 max-w-7xl mx-auto w-full space-y-6">
 
       <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <i data-lucide="truck" class="text-blue-600"></i> Receive Delivery - Vehicle V-102 (Trip 1)
+        <h1 class="text-lg md:text-2xl font-bold text-gray-800 flex items-center gap-2">
+          <i data-lucide="truck" class="text-blue-600 w-5 h-5 md:w-6 md:h-6"></i> Receive Delivery - Vehicle V-102 (Trip
+          1)
         </h1>
       </div>
 
@@ -96,8 +98,8 @@
 
         <!-- LEFT SIDE: PRIORITY ITEMS -->
         <div class="space-y-4">
-          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 shadow-sm">
-            <h3 class="font-bold text-amber-800 text-sm flex items-center gap-1">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 md:p-4 shadow-sm">
+            <h3 class="font-bold text-amber-800 text-xs md:text-sm flex items-center gap-1">
               <i data-lucide="alert-triangle" class="w-4 h-4"></i> Priority Items (Unload First!)
             </h3>
           </div>
@@ -105,14 +107,15 @@
           <div class="bg-white rounded-xl shadow-sm border p-4 space-y-3">
             <div class="flex justify-between items-start">
               <div>
-                <h4 class="font-bold text-gray-800 flex items-center gap-2">🥛 Fresh Milk (100L) <span
-                    class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded">Priority</span></h4>
+                <h4 class="font-bold text-gray-800 flex items-center gap-2 text-xs md:text-base">🥛 Fresh Milk (100L)
+                  <span class="bg-amber-100 text-amber-800 text-[10px] md:text-xs px-2 py-0.5 rounded">Priority</span>
+                </h4>
                 <p class="text-xs text-gray-500">Batch ID: #ORD-9012</p>
               </div>
               <div class="flex items-center gap-1">
                 <label class="text-xs text-gray-600">Qty:</label>
                 <input type="number" value="100"
-                  class="w-16 px-2 py-1 border rounded text-center font-semibold text-sm bg-white" />
+                  class="w-14 md:w-16 px-2 py-1 border rounded text-center font-semibold text-sm bg-white" />
               </div>
             </div>
             <div class="flex gap-2 pt-2 border-t">
@@ -137,8 +140,8 @@
 
         <!-- RIGHT SIDE: OTHER ITEMS -->
         <div class="space-y-4">
-          <div class="bg-gray-200 border border-gray-300 rounded-xl p-4 shadow-sm">
-            <h3 class="font-bold text-gray-700 text-sm flex items-center gap-1">
+          <div class="bg-gray-200 border border-gray-300 rounded-xl p-3 md:p-4 shadow-sm">
+            <h3 class="font-bold text-gray-700 text-xs md:text-sm flex items-center gap-1">
               <i data-lucide="package" class="w-4 h-4"></i> Other Items & Standard Stock
             </h3>
           </div>
@@ -146,14 +149,14 @@
           <div class="bg-white rounded-xl shadow-sm border p-4 space-y-3">
             <div class="flex justify-between items-start">
               <div>
-                <h4 class="font-bold text-gray-800 flex items-center gap-2">🥕 Carrot - 50kg <span
-                    class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded">Standard</span></h4>
+                <h4 class="font-bold text-gray-800 flex items-center gap-2 text-xs md:text-base">🥕 Carrot - 50kg <span
+                    class="bg-gray-200 text-gray-700 text-[10px] md:text-xs px-2 py-0.5 rounded">Standard</span></h4>
                 <p class="text-xs text-gray-500">Batch ID: #ORD-8821</p>
               </div>
               <div class="flex items-center gap-1">
                 <label class="text-xs text-gray-600">Qty:</label>
                 <input type="number" value="50"
-                  class="w-16 px-2 py-1 border rounded text-center font-semibold text-sm bg-white" />
+                  class="w-14 md:w-16 px-2 py-1 border rounded text-center font-semibold text-sm bg-white" />
               </div>
             </div>
             <div class="flex gap-2 pt-2 border-t">
@@ -181,7 +184,7 @@
       <!-- Confirm Receipt Button -->
       <div class="flex justify-end pt-4">
         <button onclick="confirmReceipt()"
-          class="flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-3 rounded-lg hover:bg-blue-700 shadow-lg transition">
+          class="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white font-bold px-6 md:px-8 py-3 rounded-lg hover:bg-blue-700 shadow-lg transition text-sm md:text-base">
           <i data-lucide="check-circle" class="w-5 h-5"></i> Confirm Receipt & Update Stock
         </button>
       </div>
@@ -189,7 +192,7 @@
     </main>
   </div>
 
-  <!-- HISTORY MODAL (Pop-up) -->
+  <!-- HISTORY MODAL -->
   <div id="history-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b pb-3">

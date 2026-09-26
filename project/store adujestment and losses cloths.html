@@ -67,13 +67,19 @@
                 <h1 class="text-lg font-bold text-gray-800">Store Adjustments & Losses</h1>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <!-- HISTORY BUTTON -->
+            <div class="flex items-center space-x-3">
+                <!-- NEW: DAMAGE HISTORY BUTTON -->
+                <button onclick="toggleDamageHistoryModal(true)"
+                    class="flex items-center gap-2 bg-red-50 text-red-700 border border-red-200 px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-red-100 transition shadow-sm">
+                    <i data-lucide="alert-triangle" class="w-4 h-4"></i> Damage List
+                </button>
+                <!-- EXISTING: HISTORY BUTTON -->
                 <button onclick="toggleHistoryModal(true)"
                     class="flex items-center gap-2 bg-gray-800 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-900 transition shadow">
                     <i data-lucide="history" class="w-4 h-4"></i> Adjustment History
                 </button>
-                <div class="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold">
+                <div
+                    class="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold ml-2">
                     <i data-lucide="user" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -84,7 +90,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                <!-- LEFT COLUMN (Main Flow: 2 Columns wide on large screens) -->
+                <!-- LEFT COLUMN -->
                 <div class="lg:col-span-2 space-y-6">
 
                     <!-- SEARCH & AVAILABILITY BOX -->
@@ -104,7 +110,8 @@
                                 class="bg-blue-50 border border-blue-200 rounded-lg p-3 flex-1 flex justify-between items-center">
                                 <div>
                                     <p class="text-xs text-gray-500 font-semibold">Selected Item</p>
-                                    <p class="text-sm font-bold text-blue-800">Cotton T-Shirt (M, L)</p>
+                                    <p class="text-sm font-bold text-blue-800" id="selected-item-name">Cotton T-Shirt
+                                        (M, L)</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-xs text-gray-500 font-semibold">Current Availability</p>
@@ -115,7 +122,7 @@
                     </div>
 
                     <!-- ADJUSTMENT QTY & REASON BOX -->
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5 relative">
                         <h3 class="font-bold text-gray-800 flex items-center gap-2"><i data-lucide="edit-3"
                                 class="w-5 h-5 text-amber-600"></i> Adjustment Qty, Reason & Category</h3>
 
@@ -144,12 +151,21 @@
                             </div>
                         </div>
 
-                        <!-- Optional Remarks / Photo proof -->
-                        <div class="pt-4 border-t border-gray-100">
+                        <!-- Notes -->
+                        <div class="pt-2">
                             <label class="text-sm font-semibold text-gray-700 block mb-2">Additional Notes
                                 (Optional):</label>
-                            <input type="text" placeholder="E.g., Returned by customer due to torn stitching"
+                            <input type="text" id="adj-notes"
+                                placeholder="E.g., Returned by customer due to torn stitching"
                                 class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+
+                        <!-- NEW: ADD TO DAMAGE LIST BUTTON -->
+                        <div class="pt-4 border-t border-gray-100 flex justify-end">
+                            <button onclick="addToDamageList()"
+                                class="flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 font-bold px-5 py-2 rounded-lg hover:bg-red-100 transition text-sm shadow-sm">
+                                <i data-lucide="plus-circle" class="w-4 h-4"></i> Add to Damage List
+                            </button>
                         </div>
                     </div>
 
@@ -157,7 +173,6 @@
 
                 <!-- RIGHT COLUMN (Low Stock Items) -->
                 <div class="lg:col-span-1 space-y-6">
-
                     <div
                         class="bg-white rounded-xl shadow-sm border border-red-200 overflow-hidden flex flex-col h-full">
                         <div class="bg-red-50 p-4 border-b border-red-100 flex items-center gap-2">
@@ -166,7 +181,6 @@
                         </div>
 
                         <div class="p-4 flex-1 space-y-4">
-
                             <!-- Low Stock Item 1 -->
                             <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg flex flex-col gap-2">
                                 <div>
@@ -196,10 +210,8 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -215,25 +227,43 @@
         </main>
     </div>
 
-    <!-- HISTORY MODAL (For Adjustments) -->
+    <!-- REGULAR ADJUSTMENT HISTORY MODAL -->
     <div id="history-modal"
         class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[50]">
         <div class="bg-white rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
             <div class="flex justify-between items-center border-b pb-3">
                 <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
-                    <i data-lucide="history" class="text-blue-600"></i> Adjustment History
+                    <i data-lucide="history" class="text-blue-600"></i> General Adjustment History
                 </h3>
                 <button onclick="toggleHistoryModal(false)"
                     class="text-gray-500 hover:text-gray-700 font-bold text-lg">✕</button>
             </div>
-
             <div class="space-y-3 max-h-96 overflow-y-auto" id="history-list">
-                <!-- Default Empty State or Previous Records -->
                 <p class="text-sm text-gray-500 text-center py-4">No recent adjustments.</p>
             </div>
-
             <div class="flex justify-end pt-2">
                 <button onclick="toggleHistoryModal(false)"
+                    class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: SEPARATE DAMAGE HISTORY MODAL -->
+    <div id="damage-history-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-red-700 flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="text-red-600"></i> Damaged Items Record
+                </h3>
+                <button onclick="toggleDamageHistoryModal(false)"
+                    class="text-gray-500 hover:text-gray-700 font-bold text-lg">✕</button>
+            </div>
+            <div class="space-y-3 max-h-96 overflow-y-auto" id="damage-history-list">
+                <p class="text-sm text-gray-500 text-center py-4">No damaged items recorded yet.</p>
+            </div>
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleDamageHistoryModal(false)"
                     class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700">Close</button>
             </div>
         </div>
@@ -252,19 +282,69 @@
             show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
         }
 
+        function toggleDamageHistoryModal(show) {
+            const modal = document.getElementById('damage-history-modal');
+            show ? modal.classList.remove('hidden') : modal.classList.add('hidden');
+        }
+
+        // FUNCTION TO STORE IN SEPARATE DAMAGE HISTORY
+        function addToDamageList() {
+            const qty = document.getElementById('adj-qty').value;
+            const reason = document.getElementById('adj-reason').value;
+            const notes = document.getElementById('adj-notes').value;
+            const itemName = document.getElementById('selected-item-name').innerText;
+
+            if (!reason) {
+                alert("Please select a Category / Reason before adding to the Damage List.");
+                return;
+            }
+
+            const damageList = document.getElementById('damage-history-list');
+
+            if (damageList.innerText.includes("No damaged items")) {
+                damageList.innerHTML = '';
+            }
+
+            const today = new Date();
+            const timeString = today.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateString = today.toLocaleDateString();
+
+            const newDamageRecord = `
+        <div class="bg-red-50 border border-red-200 p-4 rounded-lg flex justify-between items-start text-sm">
+          <div>
+            <p class="font-bold text-gray-900">${itemName}</p>
+            <p class="text-xs text-red-700 mt-1 font-semibold">Issue: ${reason}</p>
+            ${notes ? `<p class="text-xs text-gray-600 mt-1 italic">Note: ${notes}</p>` : ''}
+            <p class="text-xs text-gray-400 mt-2">${dateString} at ${timeString}</p>
+          </div>
+          <div class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs shrink-0 shadow-sm">
+            ${qty} Pcs Damaged
+          </div>
+        </div>
+      `;
+
+            damageList.innerHTML = newDamageRecord + damageList.innerHTML;
+
+            alert(`${qty} pcs of ${itemName} have been moved to the Damage List!`);
+
+            document.getElementById('adj-qty').value = 1;
+            document.getElementById('adj-reason').value = "";
+            document.getElementById('adj-notes').value = "";
+        }
+
+        // FUNCTION FOR REGULAR INVENTORY UPDATE
         function updateInventory() {
             const qty = document.getElementById('adj-qty').value;
             const reason = document.getElementById('adj-reason').value;
+            const itemName = document.getElementById('selected-item-name').innerText;
 
             if (!reason) {
                 alert("Please select a Category / Reason for the adjustment.");
                 return;
             }
 
-            // Simulate updating inventory and adding to history
             const historyList = document.getElementById('history-list');
 
-            // Clear empty state message if exists
             if (historyList.innerText.includes("No recent")) {
                 historyList.innerHTML = '';
             }
@@ -275,23 +355,22 @@
             const newRecord = `
         <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg flex justify-between items-center text-sm">
           <div>
-            <p class="font-bold text-gray-800">Cotton T-Shirt (M, L)</p>
+            <p class="font-bold text-gray-800">${itemName}</p>
             <p class="text-xs text-gray-500 mt-1">Reason: <span class="font-semibold">${reason}</span> | Time: ${timeString}</p>
           </div>
-          <div class="bg-red-100 text-red-700 px-3 py-1 rounded font-bold">
+          <div class="bg-gray-200 text-gray-700 px-3 py-1 rounded font-bold">
             -${qty} Pcs
           </div>
         </div>
       `;
 
-            // Add to top of list
             historyList.innerHTML = newRecord + historyList.innerHTML;
 
-            alert(`Inventory Updated Successfully!\nReduced ${qty} pcs of Cotton T-Shirt due to ${reason}.`);
+            alert(`Inventory Updated Successfully!\nReduced ${qty} pcs of ${itemName} due to ${reason}.`);
 
-            // Reset inputs
             document.getElementById('adj-qty').value = 1;
             document.getElementById('adj-reason').value = "";
+            document.getElementById('adj-notes').value = "";
         }
     </script>
 </body>
