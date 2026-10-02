@@ -1,0 +1,40 @@
+.image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 15px
+}
+
+.coffe-image img {
+    border: 10px solid;
+    border-style: double;
+    align-items: center;
+    padding: 8px;
+    margin: 16px;
+    margin-bottom: 17px;
+
+}
+
+.coffe-image {
+    color: bisque;
+    display: block;
+
+}
+
+.coffe-image a {
+    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row;
+    padding: 0;
+}
+
+.order-link {
+    border: 1px solid;
+    padding-top: 12px;
+    border-radius: 12px;
+}
+
+.order-link a:hover {
+    text-decoration: none;
+}
