@@ -20,3 +20,7 @@ function changecolor() {
 };
 
 changeColor.addEventListener("mouseover", changecolor);
+
+document.querySelector(".btn3").addEventListener("click", function (e) {
+    console.log(e.target.innerHTML = "CLICKED");
+})
