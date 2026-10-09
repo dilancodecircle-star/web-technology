@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: url("C:\Users\Dilan\Downloads\moon-star-trails-5120x2880-21054.jpg") no-repeat center center/cover;
+}
+
+.container {
+    width: 550px;
+    height: 450px;
+}
+
+.header {
+    font-size: 1.2rem;
+    border: 1px solid #fff;
+    background-color: #262626;
+    padding: 5px;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: #fff;
+
+}
+
+.main-contant {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 50px 40px;
+    box-shadow: 0 0 10px;
+}
+
+.text-area,
+.main-contant {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.person,
+.main-contant {
+    font-size: 1.6rem;
+
+    text-transform: uppercase;
+}
+
+button {
+    background-color: #262626;
+    font-size: 1.4rem;
+    padding: 15px;
+    margin-top: 12px;
+    color: #fff;
+    border-radius: 12px;
+}

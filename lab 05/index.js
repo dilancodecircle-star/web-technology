@@ -22,8 +22,21 @@ if (orderConfirm) {
 }
 
 else {
-    console.log('Order cancelled for ' + name);*/
-function message() {
-    document.getElementById("show").innerHTML = "massage is changed";
+    console.log('Order cancelled for ' + name);
+function message1() {
+    document.getElementById("show").innerHTML = "try again button 1";
+}
+function message2() {
+    document.getElementById("show").innerHTML = "try again button 2";
+}
+function message3() {
+    document.getElementById("show").innerHTML = "welcome to js";
+}*/
+
+
+function append() {
+    let input = document.getElementById("text");
+    let output = document.getElementById("show");
+    output.innerHTML = output.innerHTML + input.value
 
 }
