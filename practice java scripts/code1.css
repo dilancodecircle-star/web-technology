@@ -1,0 +1,66 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: url("moon-star-trails-5120x2880-21054.jpg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.content-container {
+    display: none;
+    width: 60%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 30px;
+    transition: .6s;
+
+}
+
+.header {
+    align-items: center;
+}
+
+.content .question {
+    font-size: 20px;
+    margin: 20px;
+    position: relative;
+    border-bottom: 1px solid;
+}
+
+.answer {
+    height: 0px;
+    overflow: hidden;
+
+
+}
+
+
+
+#button,
+#close {
+    padding: 10px;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-size: 22px;
+}
+
+#button:hover,
+#close:hover {
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+    left: -5px;
+    top: 90%
+}
+
+#button {
+    display: block;
+}
+
+#close {
+    display: none;
+}
