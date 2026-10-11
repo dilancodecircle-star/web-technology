@@ -27,3 +27,32 @@ console.log("Out of Stock");
 
 //Activity 3
 
+let ratings = Number(prompt("Enter the Ratings 1 to 5"));
+let n = 1;
+while (n)
+    if (1 <= ratings && ratings <= 5) {
+        alert("Thank you for your rating");
+        n = 0;
+        continue;
+    }
+    else {
+        ratings = Number(prompt("Invalid ratings , Enter the Ratings 1 to 5"));
+
+
+    }
+
+// activity 4
+let menue = ["Espresso", "Latte", "Cappuccino"];
+console.log("First menue item is " + menue[0]);
+console.log("last menue item is " + menue[(menue.length - 1)]);
+menue[1] = "Iced latte";
+console.log(menue);
+menue.push("Moch");
+console.log(menue);
+menue.pop();
+console.log(menue);
+menue.shift();
+console.log(menue);
+menue.unshift("Americano")
+console.log(menue);
+
