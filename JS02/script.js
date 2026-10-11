@@ -56,3 +56,22 @@ console.log(menue);
 menue.unshift("Americano")
 console.log(menue);
 
+//Activity 5
+let dailySales = [18, 42, 35, 20, 50];
+let high = 0;
+for (i = 0; i < dailySales.length; i++) {
+    if (dailySales[i] >= 30) {
+        console.log(dailySales[i] + " High sales");
+        high++;
+
+    }
+    else {
+        console.log(dailySales[i] + " Normal Sale");
+    };
+
+};
+
+console.log("High sale Days  : " + high)
+
+
+
