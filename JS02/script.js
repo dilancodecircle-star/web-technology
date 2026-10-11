@@ -16,3 +16,14 @@ for (i = 0; i < sales.length; i++) {
     };
 };
 
+//Activity 2
+
+let stock = 5;
+while (stock > 0) {
+    console.log("order served . Remaining Stock " + (stock - 1));
+    stock--;
+};
+console.log("Out of Stock");
+
+//Activity 3
+
