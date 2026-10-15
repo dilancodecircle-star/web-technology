@@ -73,5 +73,75 @@ for (i = 0; i < dailySales.length; i++) {
 
 console.log("High sale Days  : " + high)
 
+//Activity 6
+let order = {
+    customer: "Nimal",
+    coffee: "Cappuccino",
+    quantity: 2,
+    status: "Confirmed"
+};
+
+for (let key in order) {
+    console.log(key + " : " + order[key]);
+};
+
+//Activity 7
+
+let loylty = Number(prompt("Number of purches"));
+let text = document.getElementById("loyalty-output")
+if (loylty > 20) {
+    text.innerText = "gold Cstomer";
+
+} else if (loylty > 10) {
+    text.innerText = "Silver Cstomer";
+} else if (loylty > 5) {
+    text.innerText = "Brozone Cstomer";
+} else {
+    text.innerText = "reglar Cstomer";
+};
+
+
+//activity 8
+
+let day = Number(prompt(" enter a day number from 1 to 5"));
+switch (day) {
+    case 1:
+        console.log("Monday - Espresso Discount");
+        break;
+
+    case 2:
+        console.log("Tuesday - Free Cookie");
+        break;
+
+    case 3:
+        console.log("Wednesday - Iced Coffee Discount");
+        break;
+
+    case 4:
+        console.log("Thursday - Free Extra Shot");
+        break;
+
+    case 5:
+        console.log("Friday - Cappuccino Special");
+        break;
+    default:
+        console.log("Invalid Day Number ")
+
+
+
+
+}
+
+
+let comment = "The coffee was excellent";
+console.log(comment.length);
+console.log(comment.toUpperCase());
+console.log(comment.toLocaleLowerCase());
+console.log(comment.includes("coffee"));
+
+let js = "JS";
+for (i = 0; i < js.length; i++) {
+    console.log(js[i]);
+};
 
 
