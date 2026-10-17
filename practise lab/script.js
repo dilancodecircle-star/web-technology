@@ -1,7 +1,8 @@
-let menu = ["Espresso", "Latte", "Cappuccino"];
-console.log(menu[menu.length - 1]);
-menu[1] = "Ice latte";
-console.log(menu);
-console.log("Push motha to");
-menu.push("motha");
-console.log(menu);
+let dailySales = [18, 42, 35, 20, 50];
+for (let sale of dailySales) {
+    if (sale > 30) {
+        console.log("High sale");
+    } else {
+        console.log("narmal sale");
+    };
+};
