@@ -144,3 +144,10 @@ code {
 }
 
 */
+
+.student {
+  color: rgb(76, 6, 83);
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid;
+}

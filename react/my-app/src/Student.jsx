@@ -1,6 +1,6 @@
 function Student(props) {
     return (
-        <div>
+        <div className="student">
             <p>name : {props.name}</p>
             <p>Age : {props.age}</p>
             <p>Student : {props.isStudent ? "Yes" : "No"}</p>
