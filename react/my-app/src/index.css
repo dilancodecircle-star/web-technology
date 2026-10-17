@@ -112,7 +112,7 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
-}*/
+}
 
 .card {
   border: 1px solid hsla(0, 0%, 0%, 0.1);
@@ -142,3 +142,5 @@ code {
   font-weight: bold;
 
 }
+
+*/
