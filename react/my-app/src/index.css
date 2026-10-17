@@ -145,9 +145,16 @@ code {
 
 */
 
-.student {
-  color: rgb(76, 6, 83);
-  font-weight: bold;
-  padding: 10px;
-  border: 1px solid;
+.welcome-btn {
+  background-color: green;
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
+}
+
+.invalid-text {
+  background-color: red;
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
 }
