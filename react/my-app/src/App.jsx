@@ -1,8 +1,8 @@
-import UserGreeting from './UserGreeting.jsx'
+import Button from './Button.jsx'
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={true} username="Dilan" />
+      <Button />
     </>
   );
 
