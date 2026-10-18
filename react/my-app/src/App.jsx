@@ -1,8 +1,8 @@
-import Library from './Library.jsx'
+import Button from './Button.jsx'
 function App() {
   return (
     <>
-      <Library name="Libery" />
+      <Button />
     </>
   );
 

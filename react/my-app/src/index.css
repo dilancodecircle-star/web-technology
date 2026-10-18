@@ -145,16 +145,6 @@ code {
 
 */
 
-.welcome-btn {
-  background-color: green;
-  width: 100%;
-  padding: 12px;
-  border-radius: 18px;
-}
-
-.invalid-text {
-  background-color: red;
-  width: 100%;
-  padding: 12px;
-  border-radius: 18px;
+.image {
+  height: 250px
 }
