@@ -1,8 +1,8 @@
-import UserGreeting from './UserGreeting.jsx'
+import Library from './Library.jsx'
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={true} username="Dilan" />
+      <Library name="Libery" />
     </>
   );
 
