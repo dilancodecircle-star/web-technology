@@ -149,3 +149,29 @@ code {
   height: 250px;
   display: block;
 }
+
+.counter-container {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.count-display {
+  font-size: 10em;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.counter-btn {
+  padding: 12px;
+  margin-right: 5px;
+  background-color: hsl(197, 100%, 58%);
+  border: 1px solid hsl(197, 100%, 58%);
+  border-radius: 8px;
+  color: #fff;
+}
+
+.counter-btn:hover {
+  background-color: hsl(197, 100%, 48%);
+
+  cursor: pointer;
+}
