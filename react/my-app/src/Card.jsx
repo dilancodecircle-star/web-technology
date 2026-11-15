@@ -1,4 +1,5 @@
 import profilePic from './assets/WhatsApp Image 2026-01-27 at 7.36.59 PM.jpeg'
+import profile from './assets/image'
 
 function Card() {
     return (

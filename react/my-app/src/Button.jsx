@@ -1,13 +1,18 @@
-import profilePic from './assets/WhatsApp Image 2026-01-27 at 7.36.59 PM.jpeg'
 function Button() {
-    let img = document.querySelector(".image");
-    function handleClick() {
-        window.alert("he hehe he")
+    let count = 0;
+    const click = (name) => {
+        if (count < 3) {
+            count++;
+            console.log(`${name} you clicked me ${count}`);
+        } else {
+            console.log(`${name} stop clicking me`);
+        };
+    }
 
+    const handleClick = (e) => e.target.textContent = "pkayo";
 
-    };
     return (
-        <img onClick={handleClick} src={profilePic} className="image" ></img >
+        <button onClick={(e) => handleClick(e)}>click me</button>
     );
 }
-export default Button
+export default Button;
