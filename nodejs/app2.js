@@ -9,5 +9,8 @@ clearInterval();
 window.console.log();
 */
 
-console.log(module);
+const logger = require('./logger');
 
+
+
+logger.log("dilan");
