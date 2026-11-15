@@ -50,11 +50,18 @@ emitter.emit('messageLogged', { id: 1, url: 'http://' });
 
 
 const EventEmitter = require('events');
-const emitter = new EventEmitter();
 
 
-emitter.on("login", function (e) {
-    console.log('login sucessful', e);
+
+
+
+
+
+const Logger = require('./logger');
+const logger = new Logger();
+
+logger.on("login", function () {
+    console.log('login sucessful');
 });
 const currentDate = new Date();
-emitter.emit('login', currentDate);
+logger.log('message')
