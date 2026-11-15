@@ -1,20 +1,22 @@
-(function (exports, require, module, __filename, __dirname) {
-    var url = "http://my_logger.io/log";
 
-    function log(message) {
-        console.log(message);
+console.log(__filename);
+console.log(__dirname);
+var url = "http://my_logger.io/log";
+
+function log(message) {
+    console.log(message);
 
 
-    }
+}
 
 
-    function print(message) {
-        console.log(message + 'say this by dilan');
-    }
+function print(message) {
+    console.log(message + 'say this by dilan');
+}
 
-    module.exports = {
-        log: log,
-        print: print
+module.exports = {
+    log: log,
+    print: print
 
-    }
-})
+}
+
